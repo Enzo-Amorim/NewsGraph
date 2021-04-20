@@ -170,7 +170,7 @@ const LastNewsTitle = styled.Text`
   color: #ffffff;
 `;
 
-const CategoryView = styled.View`
+const CategoryView = styled.TouchableOpacity`
   flex: 1;
   justify-content: center;
   align-items: center;
@@ -199,7 +199,7 @@ const CategoryModalText = styled.Text`
   color: #ffffff;
 `;
 
-const CountryView = styled.View`
+const CountryView = styled.TouchableOpacity`
   flex: 1;
   justify-content: center;
   align-items: center;
@@ -414,7 +414,9 @@ export default function NewsPage({navigation}) {
         animationType="fade"
         transparent={true}
         visible={categoryModalVisible}>
-        <CategoryView>
+        <CategoryView
+          activeOpacity={0}
+          onPress={() => setCategoryModalVisible(!categoryModalVisible)}>
           <CategoryModalView>
             {categories.map((data, index) => (
               <Pressable key={index} onPress={() => changeCategory(data)}>
@@ -428,7 +430,9 @@ export default function NewsPage({navigation}) {
         animationType="fade"
         transparent={true}
         visible={countryModalVisible}>
-        <CountryView>
+        <CountryView
+          activeOpacity={0}
+          onPress={() => setCountryModalVisible(!countryModalVisible)}>
           <CountryModalView>
             {countries.map((data, index) => (
               <Pressable
